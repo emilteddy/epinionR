@@ -2,7 +2,7 @@ Package: epinionR
 Title: How to be a CVI compliant consultant at Epinion A/S
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = Emil Teddy",
+    person(given = Emil",
            family = "Stachurska",
            role = c("aut", "cre"),
            email = "emst@epinionglobal.com",
