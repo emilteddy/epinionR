@@ -8,12 +8,13 @@
 #' "alder", "køn_alder", "region", "uddannelse2", "person", "husstand" and "partivalg_sidste_fv".
 #' @return A dataframe with the variable specified and a share of the population
 #' @export
+#' @import dkstat
 epinion_dst <- function(variable) {
 
   arg <- match.call()
 
   # Get info on all available tables from DST
-  DST_tables <- dst_get_tables()
+  DST_tables <- dkstat::dst_get_tables()
 
   # Get id on relevant tables
   # Region, køn, alder
@@ -41,10 +42,10 @@ epinion_dst <- function(variable) {
 
   # Get info about the structure of the desired data to set up
   # the search queries
-  FOLK_meta <- dst_meta(table = FOLK$id, lang = "da") # age, region, gender
-  UDD_ALL_meta <- dst_meta(table = UDD_ALL$id, lang = "da") # education all
-  UDD_YOUNG_meta <- dst_meta(table = UDD_YOUNG$id, lang = "da") # education young
-  BOL_meta <- dst_meta(table = BOL$id, lang = "da") # households
+  FOLK_meta <- dkstat::dst_meta(table = FOLK$id, lang = "da") # age, region, gender
+  UDD_ALL_meta <- dkstat::dst_meta(table = UDD_ALL$id, lang = "da") # education all
+  UDD_YOUNG_meta <- dkstat::dst_meta(table = UDD_YOUNG$id, lang = "da") # education young
+  BOL_meta <- dkstat::dst_meta(table = BOL$id, lang = "da") # households
 
   # Below are the search queries. A "*" means that all
   # categories in that variable will be downloaded. If
@@ -86,10 +87,10 @@ epinion_dst <- function(variable) {
                     ANVENDELSE = "*")
 
   # Get data
-  FOLK_raw <- dst_get_data(table = FOLK$id, query = FOLK_query, lang = "da")
-  UDD_ALL_raw <- dst_get_data(table = UDD_ALL$id, query = UDD_ALL_query, lang = "da")
-  UDD_YOUNG_raw <- dst_get_data(table = UDD_YOUNG$id, query = UDD_YOUNG_query, lang = "da")
-  BOL_raw <- dst_get_data(table = BOL$id, query = BOL_query, lang = "da")
+  FOLK_raw <- dkstat::dst_get_data(table = FOLK$id, query = FOLK_query, lang = "da")
+  UDD_ALL_raw <- dkstat::dst_get_data(table = UDD_ALL$id, query = UDD_ALL_query, lang = "da")
+  UDD_YOUNG_raw <- dkstat::dst_get_data(table = UDD_YOUNG$id, query = UDD_YOUNG_query, lang = "da")
+  BOL_raw <- dkstat::dst_get_data(table = BOL$id, query = BOL_query, lang = "da")
 
   # Filter out specific age group from UDD_ALL
   UDD_ALL_1 <- UDD_ALL_raw %>%
