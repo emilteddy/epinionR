@@ -3,5 +3,6 @@
 export(epi_cols)
 export(epi_pal)
 export(epinion_color)
+export(epinion_dst)
 export(epinion_fill)
 export(epinion_style)
