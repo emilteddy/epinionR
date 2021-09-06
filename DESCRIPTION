@@ -19,6 +19,7 @@ Depends:
     ggplot2,
     dplyr,
     devtools,
-    stringr
+    stringr,
+	dkstat
 Remotes: 
     rOpenGov/dkstat
